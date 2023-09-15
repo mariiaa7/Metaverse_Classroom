@@ -1,0 +1,4 @@
+15:16:47: maria  created room a
+15:16:48: maria  joined the room
+15:17:48: ana joined the room
+15:18:59: ana left the room

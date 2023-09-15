@@ -1,0 +1,5 @@
+16:50:57: d created room d
+16:50:58: d joined the room
+16:51:10: d created room d
+16:51:11: d joined the room
+16:51:18: d wrote in the chat: "dsd"

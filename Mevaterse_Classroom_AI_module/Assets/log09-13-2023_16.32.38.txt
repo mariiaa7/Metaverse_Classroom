@@ -1,0 +1,2 @@
+16:32:45: a created room a
+16:32:47: a joined the room

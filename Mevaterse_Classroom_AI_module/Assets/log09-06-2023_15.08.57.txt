@@ -1,0 +1,6 @@
+15:09:14: a1 created room aa
+15:09:14: a1 joined the room
+15:09:52: a3 joined the room
+15:10:01: a3 left the room
+15:10:25: a joined the room
+15:11:13: a left the room
