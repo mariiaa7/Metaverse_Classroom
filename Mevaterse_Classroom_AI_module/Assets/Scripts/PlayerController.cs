@@ -69,9 +69,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private Vector3 spawnPosition;
     public AudioSource clapSound;
 
-    //Conncection variables
+    //IA variables
     string pName; 
     public Process ps = new Process();
+    public int emotionIndex;
+    public EmotionScript script;
     private string[] emotions = { "Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise" };
 
     
@@ -93,11 +95,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        
+        script = GameObject.FindObjectOfType<EmotionScript>();
         ps.StartInfo.FileName = "cmd.exe";
         //ps.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
         ps.StartInfo.Arguments = @"/c uvicorn Assets.Scripts.model_fer:app --reload";
         ps.Start();
+
 
         StartCoroutine(GetRequest("http://127.0.0.1:8000/"));
 
@@ -151,11 +154,19 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     //UnityEngine.Debug.LogError(string.Format("Error: {0}", webRequest.error));
                     break;
                 case UnityWebRequest.Result.Success:
-                    int index = int.Parse(webRequest.downloadHandler.text);
-                    UnityEngine.Debug.Log(index);
-                    if(index >= 0 && index <= 6)
-                        playerName.text = pName + "@" + emotions[index];
-                        playerName.text = playerName.text.Replace("@", System.Environment.NewLine);
+                    emotionIndex = int.Parse(webRequest.downloadHandler.text);
+                    UnityEngine.Debug.Log(emotionIndex);
+                    if(emotionIndex >= 0 && emotionIndex <= 6)
+                    switch(emotionIndex){
+                        case 0: script.angry.text = "Angry: " + ++script.angryCount; break;
+                        case 1: script.disgust.text = "Disgust: " + ++script.disgustCount; break;
+                        case 2: script.fear.text = "Fear: " + ++script.fearCount; break;
+                        case 3: script.happy.text = "Happy: " + ++script.happyCount; break;
+                        case 4: script.neutral.text = "Neutral: " + ++script.neutralCount; break;
+                        case 5: script.sad.text = "Sad: " + ++script.sadCount; break;
+                        case 6: script.surprise.text = "Surprise: " + ++script.surpriseCount; break;
+                        default: break;
+                    }
                     break;
             }
         }

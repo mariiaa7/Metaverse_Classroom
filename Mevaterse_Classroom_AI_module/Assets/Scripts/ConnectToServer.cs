@@ -44,12 +44,10 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public Button quitButton;
     public Button leaveButton;
     public Button editButton;
-
     public AudioSource buttonClick;
     public PlayerController pc;
-
-
     public PhotonView player;
+    
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();

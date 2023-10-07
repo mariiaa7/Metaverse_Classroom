@@ -2383,6 +2383,8 @@ MonoBehaviour:
   overhead: {fileID: 2432327588793178383}
   animatorController: {fileID: 7530163307746583883}
   clapSound: {fileID: 3307938740233800537}
+  emotionIndex: 0
+  script: {fileID: 0}
 --- !u!114 &-3450968785330451029
 MonoBehaviour:
   m_ObjectHideFlags: 0
